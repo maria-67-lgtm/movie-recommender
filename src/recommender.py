@@ -18,8 +18,9 @@ Titanic     0.1       1.0       0.2
 Batman      0.8       0.2       1.0
 """
 def recommend(movie):
+    movie = movie.capitalize()
     try:
-        movie_index = movies[movies['title'] == movie].index[0]
+        movie_index = movies[movies['title'].str.contains(movie, case=False)].index[0]
     except IndexError:
         print(f'Movie "{movie}" not found in the dataset.')
         return
@@ -29,14 +30,8 @@ def recommend(movie):
     similarity_sorted = enumerate(similarity_score)
     similarity_sorted = sorted(similarity_sorted, key=lambda x: x[1], reverse=True)
     top_5_movies = similarity_sorted[1:6]
-
-    for i in top_5_movies:
-        index = i[0]
-        title = movies.iloc[index].title
-        print(f'title: {title}, similarity score: {similarity_score[index]*100:.2f}%')
+    return top_5_movies
 
 
-if __name__ == '__main__':
-    recommend('mariabaez')
 
 
