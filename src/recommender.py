@@ -17,7 +17,7 @@ Avatar      1.0       0.1       0.8
 Titanic     0.1       1.0       0.2
 Batman      0.8       0.2       1.0
 """
-def recommend(movie):
+def recommend(movie, n_recommendations):
     movie = movie.capitalize()
     try:
         movie_index = movies[movies['title'].str.contains(movie, case=False)].index[0]
@@ -29,8 +29,8 @@ def recommend(movie):
 
     similarity_sorted = enumerate(similarity_score)
     similarity_sorted = sorted(similarity_sorted, key=lambda x: x[1], reverse=True)
-    top_5_movies = similarity_sorted[1:6]
-    return top_5_movies
+    top_n_movies = similarity_sorted[1:1 + n_recommendations]
+    return top_n_movies
 
 
 
