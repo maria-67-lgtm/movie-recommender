@@ -1,12 +1,15 @@
 import pandas as pd
 import numpy as np
-from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 
 from sklearn.metrics.pairwise import cosine_similarity
 movies = pd.read_csv('data/processed_movies.csv', index_col=0)
 
-
-vectorizer = CountVectorizer(stop_words='english')
+method = 'count'  # 'count' or 'tfidf'
+if method == 'count':
+    vectorizer = CountVectorizer(stop_words='english')
+elif method == 'tfidf':
+    vectorizer = TfidfVectorizer(stop_words='english')
 vectors = vectorizer.fit_transform(movies['tags'])
 
 similarity = cosine_similarity(vectors)

@@ -4,6 +4,11 @@ while True:
     movie = input("Type the movie you want to see recommendations of (or 'quit' to exit): ")
     if movie == "quit":
         break
+    try:
+        movie_index = recommender.movies[recommender.movies['title'].str.contains(movie, case=False)].index[0]
+    except IndexError:
+        print(f'Movie "{movie}" not found in the dataset. Please try again.')
+        continue
     n_recommendations = input("How many recommendations do you want? ")
     if not n_recommendations.isdigit():
         print("Please enter a valid number for recommendations.")
