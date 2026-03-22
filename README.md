@@ -1,25 +1,25 @@
-#Movie recommender
+# Movie recommender
 A content based movie recommender system with a CLI interface
 
-##Features
+## Features
 - Recommend movies based on user input
 - Choose how many movies to recommend
 - Show the simmilarity percentage
 - CLI interface with "quit" command to exit
 
-##Dataset
+## Dataset
 - tmdb_5000_credits.csv
 - tmdb_5000_movies.csv
 These datasets are merged an preprocessed into processed_movies.csv
 
-##Tech Stack
+## Tech Stack
 - Python
 - pandas
 - scikit-learn
 - CountVectorizer
 - Cosine similarity
 
-##How it works
+## How it works
 - load_data.py procces the 2 datasets and transform them into "processed_movies.csv"
 - A "tags" column is created combining:
     - keywords
@@ -31,10 +31,10 @@ These datasets are merged an preprocessed into processed_movies.csv
 - Cosine_similarity computes similarity between movie vectors
 - The system returns the top N most popular movies
 
-##How to run
+## How to run
 python src/main.py
 
-##Example
+## Example
 Type the movie you want to see recommendations of (or 'quit' to exit): avatar
 How many recommendations do you want? 5
 Top 5 movies similar to 'avatar':
@@ -44,7 +44,7 @@ Top 5 movies similar to 'avatar':
 4: Battle: Los Angeles (18.63%)
 5: Independence Day (18.58%)
 
-##Future improvements
+## Future improvements
 - Add fuzzy matching for movie title to handle typos
 - Build a graphical user interface
 - Add poster display
